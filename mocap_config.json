@@ -1,0 +1,9 @@
+{
+    "IP_SERVER": "192.168.254.1",
+    "NAME_SINGLE_BODY": "mambo_01",
+    "NAME_FILE_LOADED_QTM": "data/Demo.qtm",
+    "FLAG_REALTIME": "1",
+    "HOST_UDP": "192.168.254.1",
+    "PORT_UDP": "17000",
+    "DATA_BYTES_LENGTH_UDP": "96"
+}
