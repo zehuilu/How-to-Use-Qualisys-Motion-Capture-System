@@ -9,3 +9,4 @@
 *.o
 /.vscode/*
 /build/*
+/qualisys_cpp_sdk/*
