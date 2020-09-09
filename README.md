@@ -43,9 +43,15 @@ $ python3 .\python\subscriber_6dof_udp_python.py
 
 2. Add the whole repo to your MATLAB path.
 
-3. Run **subscriber_6dof_udp_matlab.m**
+3. Run a Python/C++ script to stream data via UDP socket. For example,
+```
+$ cd <MAIN_DIRECTORY>
+$ python3 .\python\streaming_6dof_data_python.py
+```
 
-4. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
+4. Run **subscriber_6dof_udp_matlab.m**
+
+5. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
 
 **Need to test this section after the wireless router comes. - Sept 09, 2020**
 
