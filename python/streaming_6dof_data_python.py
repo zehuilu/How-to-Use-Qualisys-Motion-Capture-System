@@ -29,7 +29,7 @@ def publisher_udp_main(json_file_data):
     """
     The following two lines show what is json_file_data
 
-        json_file = open( 'mocap_config.json')
+        json_file = open('mocap_config.json')
         json_file_data = json.load(json_file)
     """
 
