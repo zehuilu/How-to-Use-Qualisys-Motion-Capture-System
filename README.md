@@ -1,5 +1,5 @@
 # How-to-Use-Qualisys-Motion-Capture-System
-This is a tutorial about using [Qualisys Motion Capture System](https://www.qualisys.com/) in [AIMS Lab](https://engineering.purdue.edu/AIMS). This repo includes the useage and the example codes for Qualisys Python and C++ SDK, the [ROS](https://www.ros.org/) driver, and MATLAB.
+This is a tutorial about how to use [Qualisys Motion Capture System](https://www.qualisys.com/). This repo includes the useage and the example codes for Qualisys Python and C++ SDK, the [ROS](https://www.ros.org/) driver, and MATLAB.
 
 
 # Configurations
