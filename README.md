@@ -63,15 +63,34 @@ $ python3 .\python\streaming_6dof_data_python.py
 
 
 # C++
-1. I recommend [CMake](https://cmake.org/) for building C++ in Linux, and [Visual Studio](https://visualstudio.microsoft.com/vs/) in Windows.
+1. I prefer to use [CMake](https://cmake.org/) to build C++ projects in Linux and Windows.
 
-2. Follow the instructions of [qualisys_cpp_sdk](https://github.com/qualisys/qualisys_cpp_sdk) to download and build the SDK.
+2. Follow the instructions of [qualisys_cpp_sdk](https://github.com/qualisys/qualisys_cpp_sdk) to download the SDK.
 ```
 $ cd <MAIN_DIRECTORY>
 $ git clone https://github.com/qualisys/qualisys_cpp_sdk.git
 ```
 
-3. 
+3. Follow the instructions velow to build the package.
+
+For Linux:
+```
+cd qualisys_cpp_sdk
+mkdir build
+cd build
+cmake .. -DBUILD_EXAMPLES=ON
+cmake --build .
+```
+
+For Windows, Open Developer Command Prompt for VS:
+```
+cd /d <YOUR_QUALISYS_CPP_SDK>
+mkdir build
+cd build
+cmake .. -DBUILD_EXAMPLES=ON
+MSBuild qualisys_cpp_sdk.sln
+.\Debug\RigidBodyStreaming.exe
+```
 
 # ROS
 1. 
