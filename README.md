@@ -1,4 +1,4 @@
-# How-to-Use-Qualisys-Motion-Capture-System-in-AIMS-Lab
+# How-to-Use-Qualisys-Motion-Capture-System
 This is a tutorial about using [Qualisys Motion Capture System](https://www.qualisys.com/) in [AIMS Lab](https://engineering.purdue.edu/AIMS). This repo includes the useage and the example codes for Qualisys Python and C++ SDK, the [ROS](https://www.ros.org/) driver, and MATLAB.
 
 
@@ -38,7 +38,7 @@ $ python3 .\python\streaming_6dof_data_python.py
 3. The other Python scripts can be run from multiple platforms and on different machines, as long as they share the same network with the motion capture server. To subscribe to 6-DOF data via UDP socket:
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 .\python\subscriber_6dof_udp_python.py
+$ python3 python/subscriber_6dof_udp_python.py
 ```
 
 4. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
