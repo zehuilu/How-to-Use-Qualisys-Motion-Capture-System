@@ -28,14 +28,14 @@ $ pip3 install numpy
 $ pip3 install qtm
 ```
 
-2. To get 6-DOF data from Qualisys server and publish it via UDP socket, run the following commands in Windows **ONLY**. QTM only supports Windows.
+2. To get 6-DOF data from Qualisys server and publish it via UDP socket, run the following commands.
 Note that you can only run this script if processing 6-DOF data in this script is available.
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 .\python\streaming_6dof_data_python.py
+$ python3 python/streaming_6dof_data_python.py
 ```
 
-3. The other Python scripts can be run from multiple platforms and on different machines, as long as they share the same network with the motion capture server. To subscribe to 6-DOF data via UDP socket:
+3. To subscribe the streaming data, run the following commands. The publisher and the subscriber should share the same network with the motion capture server. To subscribe to 6-DOF data via UDP socket:
 ```
 $ cd <MAIN_DIRECTORY>
 $ python3 python/subscriber_6dof_udp_python.py
@@ -45,21 +45,19 @@ $ python3 python/subscriber_6dof_udp_python.py
 
 
 # MATLAB
-1. [QTM Connect for MATLAB](https://www.qualisys.com/software/matlab/) can stream real-time motion capture data to MATLAB, but I'm not sure if we have that license. However, we can still stream real-time data to MATLAB via UDP socket.
+1. [QTM Connect for MATLAB](https://www.qualisys.com/software/matlab/) can stream real-time motion capture data to MATLAB. In addition, we can stream real-time data to MATLAB via UDP socket.
 
 2. Add the whole repo to your MATLAB path.
 
-3. Run a Python/C++ script in Windows and stream data via UDP socket. For example,
+3. Run a publisher to streaming data. For example,
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 .\python\streaming_6dof_data_python.py
+$ python3 python/streaming_6dof_data_python.py
 ```
 
 4. Run **subscriber_6dof_udp_matlab.m**. This can be done from multiple platforms and on different machines, as long as they share the same network with the motion capture server.
 
 5. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
-
-**Need to test this section after the wireless router comes. - Sept 09, 2020**
 
 
 # C++
@@ -93,5 +91,5 @@ MSBuild qualisys_cpp_sdk.sln
 ```
 
 # ROS
-1. 
+To-do
 
