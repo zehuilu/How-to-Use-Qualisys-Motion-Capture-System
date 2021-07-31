@@ -59,7 +59,7 @@ def subscriber_callback(sock, buffersize):
         Here, the argument 'ddd' doesn't adjust its length automatically given the json file parameters.
         I can do that. But I just want to highlight that you can also use struct.pack to send data as well.
         """
-        data = np.fromstring(msg, dtype=np.float64)
+        data = np.frombuffer(msg, dtype=np.float64)
         print("Received the data from the publisher.")
         print(data)
 
