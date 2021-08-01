@@ -8,7 +8,7 @@ This is a tutorial about how to use [Qualisys Motion Capture System](https://www
 2. The following are the meaning of each element.
 * **"IP_SERVER"** is the IP address for the desktop which connects to the motion capture system. It shouldn't change.
 * **"NAME_SINGLE_BODY"** is the rigid body name you define in [QTM](https://www.qualisys.com/software/qualisys-track-manager/). You can have multiple names in this file. But you need to change your codes accordingly to get data for different rigid bodies.
-* **"NAME_FILE_LOADED_QTM"** is the file path to load recorded motion capture data, and stream in real-time. **(I need to debug it. - Sept 09, 2020)**
+* **"NAME_FILE_LOADED_QTM"** is the file path to load recorded motion capture data, and stream in real-time. **(I need to test this recorded data playback functionality. - Sept 09, 2020)**
 * **"FLAG_REALTIME"** is the flag to stream real-time data ("1") or recorded data ("0").
 * **"HOST_UDP"** is the IP address of the UDP socket.
 * **"PORT_UDP"** is the port number of the UDP socket.
@@ -44,11 +44,20 @@ $ python3 python/subscriber_6dof_udp.py
 4. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
 
 
-# UDP data streaming with Python asyncio
-1. 
+# UDP data streaming with last-come-first-serve
+In some robotics applications, there is a faster node publishing sensor data, such as Motion Capture System, and a slower node subscribing these data and then do some computation. The streaming data gets accumulated in the communication channel and works as first-come-first-serve due to the frequency difference. But the slower node only needs the latest data. So, I customized the UDP Protocol with asyncio so that the subscriber can work as last-come-first-serve.
 
-2. 
+1. Initialize the publisher
+```
+$ cd <MAIN_DIRECTORY>
+$ python3 python/test_send.py
+```
 
+2. Initialize the subscriber
+```
+$ cd <MAIN_DIRECTORY>
+$ python3 python/test_recv.py
+```
 
 
 # MATLAB
@@ -96,7 +105,3 @@ cmake .. -DBUILD_EXAMPLES=ON
 MSBuild qualisys_cpp_sdk.sln
 .\Debug\RigidBodyStreaming.exe
 ```
-
-# ROS
-To-do
-

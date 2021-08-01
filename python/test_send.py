@@ -1,22 +1,30 @@
 import asyncio
+import json
 from UdpProtocol import UdpProtocol
 
 
-async def main():
+async def main(network_config_file_name):
+    # Read the configuration from the json file
+    json_file = open(network_config_file_name)
+    json_file_data = json.load(json_file)
 
-    
+    # IP for listening data
+    HOST = json_file_data['HOST_UDP']
+    # Port for listening data
+    PORT = int(json_file_data['PORT_UDP'])
+    server_address = (HOST, PORT)
 
     loop = asyncio.get_running_loop()
     transport, protocol = await loop.create_datagram_endpoint(
-        UdpProtocol,
-        local_addr=None,
-        remote_addr=('127.0.0.1', 8000))
+        UdpProtocol, local_addr=None, remote_addr=server_address)
 
     idx = 0
     while True:
-        transport.sendto(str(idx).encode(), ('127.0.0.1', 8000))
+        transport.sendto(str(idx).encode(), server_address)
         print(idx)
         idx += 1
         await asyncio.sleep(0.1)
 
-asyncio.run(main())
+if __name__ == "__main__":
+    network_config_file_name = 'mocap_config.json'
+    asyncio.run(main(network_config_file_name))
