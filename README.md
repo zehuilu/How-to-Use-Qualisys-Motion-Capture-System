@@ -45,18 +45,18 @@ $ python3 python/subscriber_6dof_udp.py
 
 
 # UDP data streaming with last-come-first-serve
-In some robotics applications, there is a faster node publishing sensor data, such as Motion Capture System, and a slower node subscribing these data and then do some computation. The streaming data gets accumulated in the communication channel and works as first-come-first-serve due to the frequency difference. But the slower node only needs the latest data. So, I customized the UDP Protocol with asyncio so that the subscriber can work as last-come-first-serve.
+In some robotics applications, there is a faster node publishing sensor data, such as Motion Capture System, and a slower node subscribing these data and then do some computation. The streaming data gets accumulated in the communication channel and works as First-In-First-Out (FIFO) due to the frequency difference. But the slower node only needs the latest data. So, I customized the UDP Protocol with asyncio so that the subscriber can work as Last-In-First-Out (LIFO).
 
 1. Initialize the publisher
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 python/test_send.py
+$ python3 python/streaming_6dof_data_asyncio.py
 ```
 
 2. Initialize the subscriber
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 python/test_recv.py
+$ python3 python/subscriber_6dof_asyncio.py
 ```
 
 

@@ -3,7 +3,6 @@ import socket
 import time
 import json
 import numpy as np
-import threading
 
 """
     This is an example where you can launch a subscriber via UDP.

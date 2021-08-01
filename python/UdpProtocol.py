@@ -13,7 +13,7 @@ class UdpProtocol:
     """
     def __init__(self):
         # initialize the queue
-        self._packets = asyncio.Queue()
+        self.packets = asyncio.Queue()
 
     def connection_made(self, transport):
         print("connection made")
@@ -23,14 +23,14 @@ class UdpProtocol:
         Receive datagram from the UDP channel.
         """
         # clear the current queue and the accumulated data
-        self._packets._queue.clear()
+        self.packets._queue.clear()
 
         # initialize a queue again
-        # self._packets._finished.set()
+        # self.packets._finished.set()
 
         # put the latest data into the queue
-        # self._packets.put_nowait((data, addr))
-        self._packets.put_nowait(data)
+        # self.packets.put_nowait((data, addr))
+        self.packets.put_nowait(data)
 
     def connection_lost(self, transport):
         print("connection lost")
@@ -40,4 +40,4 @@ class UdpProtocol:
 
     async def recvfrom(self):
         # get the data from the queue
-        return await self._packets.get()
+        return await self.packets.get()

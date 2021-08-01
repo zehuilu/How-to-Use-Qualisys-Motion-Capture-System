@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-
-"""
-    Streaming 6-DOF data from QTM forever
-    (start QTM first, Capture->Continuous Capture)
-"""
-
 import asyncio
 import xml.etree.ElementTree as ET
 import pkg_resources
 import qtm
 import json
 import numpy as np
-import socket
 from UdpProtocol import UdpProtocol
 
+"""
+    Streaming 6-DOF data from QTM forever
+    (start QTM first, Capture->Continuous Capture)
+"""
 
 def create_body_index(xml_string):
     """ Extract a name to index dictionary from 6-DOF settings xml """
@@ -111,11 +108,13 @@ async def main(network_config_file_name):
     # Start streaming frames
     # Make sure the component matches with the data fetch function, for example: packet.get_6d() with "6d"
     # Reference: https://qualisys.github.io/qualisys_python_sdk/index.html
-    while True:
-        await connection.stream_frames(components=["6d"], on_packet=on_packet)
+    # while True:
+    #     await connection.stream_frames(components=["6d"], on_packet=on_packet)
+    await connection.stream_frames(components=["6d"], on_packet=on_packet)
 
 
 if __name__ == "__main__":
     network_config_file_name = 'mocap_config.json'
     # Run our asynchronous main function forever
-    asyncio.run(main(network_config_file_name))
+    asyncio.ensure_future(main(network_config_file_name))
+    asyncio.get_event_loop().run_forever()

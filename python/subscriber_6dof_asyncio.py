@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import socket
+import asyncio
 import time
 import json
 import numpy as np
-import threading
+from UdpProtocol import UdpProtocol
 
 """
     This is an example where you can launch a subscriber via UDP.
@@ -28,9 +28,10 @@ async def subscriber_udp_main(network_config_file_name):
 
     while True:
         await subscriber_callback(protocol)
-        await asyncio.sleep(1.0)
+        await asyncio.sleep(0.5)
 
-def subscriber_callback(protocol):
+
+async def subscriber_callback(protocol):
     """
     Receives the data from the publisher.
     """
