@@ -3,6 +3,7 @@ import socket
 import time
 import json
 import numpy as np
+import threading
 
 """
     This is an example where you can launch a subscriber via UDP.
@@ -24,16 +25,19 @@ def subscriber_udp_main(network_config_file_name):
     # Create a UDP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+
     # Bind the publisher IP address and Port
     server_address = (HOST, PORT)
     sock.bind(server_address)
 
     # buffer size
     buffersize = int(json_file_data['DATA_BYTES_LENGTH_UDP'])
-    
+
     while True:
         subscriber_callback(sock, buffersize)
-        # time.sleep(1.0)
+        time.sleep(0.5)
 
 
 def subscriber_callback(sock, buffersize):
@@ -60,8 +64,8 @@ def subscriber_callback(sock, buffersize):
         I can do that. But I just want to highlight that you can also use struct.pack to send data as well.
         """
         data = np.frombuffer(msg, dtype=np.float64)
-        print("Received the data from the publisher.")
-        print(data)
+        # print("Received the data from the publisher.")
+        # print(data)
 
         position = np.array([[data[0]], [data[1]], [data[2]]], dtype=np.float64)
         rotation = np.asarray(data[3:], dtype=np.float64).reshape(3, 3)
@@ -69,8 +73,8 @@ def subscriber_callback(sock, buffersize):
         print("Position in numpy [meter]")
         print(position)
 
-        print("Rotation matrix in numpy")
-        print(rotation)
+        # print("Rotation matrix in numpy")
+        # print(rotation)
 
         return_flag = True
     else:

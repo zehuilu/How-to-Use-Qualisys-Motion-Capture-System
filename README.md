@@ -32,16 +32,23 @@ $ pip3 install qtm
 Note that you can only run this script if processing 6-DOF data in this script is available.
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 python/streaming_6dof_data_python.py
+$ python3 python/streaming_6dof_data.py
 ```
 
 3. To subscribe the streaming data, run the following commands. The publisher and the subscriber should share the same network with the motion capture server. To subscribe to 6-DOF data via UDP socket:
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 python/subscriber_6dof_udp_python.py
+$ python3 python/subscriber_6dof_udp.py
 ```
 
 4. To make multiple devices access to the 6-DOF data, you can use either TCP/IP or UDP socket for communications. More information are available in [Tutorial-About-TCP-IP-and-UDP-Communications](https://github.com/zehuilu/Tutorial-About-TCP-IP-and-UDP-Communications).
+
+
+# UDP data streaming with Python asyncio
+1. 
+
+2. 
+
 
 
 # MATLAB
@@ -52,7 +59,7 @@ $ python3 python/subscriber_6dof_udp_python.py
 3. Run a publisher to streaming data. For example,
 ```
 $ cd <MAIN_DIRECTORY>
-$ python3 python/streaming_6dof_data_python.py
+$ python3 python/streaming_6dof_data.py
 ```
 
 4. Run **subscriber_6dof_udp_matlab.m**. This can be done from multiple platforms and on different machines, as long as they share the same network with the motion capture server.

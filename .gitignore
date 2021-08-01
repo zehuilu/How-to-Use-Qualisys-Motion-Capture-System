@@ -10,3 +10,4 @@
 /.vscode/*
 /build/*
 /qualisys_cpp_sdk/*
+/python/__pycache__/*

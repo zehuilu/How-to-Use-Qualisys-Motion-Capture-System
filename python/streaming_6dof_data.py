@@ -110,7 +110,7 @@ async def main(network_config_file_name):
 
             # send 6-DOF data via UDP
             # concatenate the position and rotation matrix vertically
-            msg = np.asarray((position.x/1000.0, position.y/1000.0, position.z/1000.0) + rotation.matrix, dtype=np.float64).tostring()
+            msg = np.asarray((position.x/1000.0, position.y/1000.0, position.z/1000.0) + rotation.matrix, dtype=np.float64).tobytes()
             sock_udp.sendto(msg, server_address_udp)
             print("6-DOF data sent via UDP!")
         
